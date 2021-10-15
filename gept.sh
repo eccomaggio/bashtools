@@ -5,7 +5,7 @@ help_func()
 {
     cat << EOF
 This script looks up words/patterns in the GEPT wordlist.
-    gept <word> -[option]
+    gept word-to-look-up [-option]
        -l <elem/int/hi>    Level
        -p <adj/verb...>    Part of speech
        -s                  Starting with...
@@ -26,6 +26,11 @@ context="all words like "
 
 ## find directory of script (assume the wordlist is in the same dir)
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+if [ -z "$1" ]; then
+    help_func
+   exit 1
+fi 
 
 while [ "$1" != "" ]; do
     # echo "parameter 1 equals $1; you now have $# positional parameters"
