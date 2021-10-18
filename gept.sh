@@ -65,7 +65,10 @@ done
 
 # msg="Find ${context}<$word> "
 msg="\033[34mFind ${context}<\033[37m$word\033[34m> \033[0m"
-awk_1="${start}${word}${endline}"
+## add in option flags and include optional underscore
+## (which distinguishes homonyms in the word list)
+
+awk_1="${start}${word}\_?${endline}"
 awk_2=".*"
 awk_3=".*"
 if [[ -n "$pos" ]]; then
@@ -83,4 +86,4 @@ awk -v word=$awk_1 -v pos=$awk_2 -v level=$awk_3 -F '\t' \
     'BEGIN{count=0} tolower($1) ~ word && $2 ~ pos && $3 ~ level \
      {print "\t" $1,"\033[32m[" $2 "]\033[36m", $3, "\033[33m" $4 "\033[0m"; count++} \
      END{ print "\033[34m" count " match(es)\033[0m"}' \
-     ${DIR}/words_gept_l.tsv
+     ${DIR}/words_gept_l.tsv | sed 's/_//'
