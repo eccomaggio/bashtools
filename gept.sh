@@ -41,6 +41,16 @@ while [ "$1" != "" ]; do
     -l | --level )      shift
                         level="$1"
                         ;;
+    -le )               level="ele"
+                        ;;
+    -li )               level="int"
+                        ;;
+    -lh )               level="hi"
+                        ;;    
+    -lei | -lie )        level="ele|int"
+                        ;;
+    -lih | -lhi )       level="int|hi"
+                        ;;        
     -p | --pos )        shift
                         pos="$1"
                         ;;
