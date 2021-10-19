@@ -78,7 +78,7 @@ msg="\033[34mFind ${context}<\033[37m$word\033[34m> \033[0m"
 ## add in option flags and include optional underscore
 ## (which distinguishes homonyms in the word list)
 
-awk_1="${start}${word}\_?${endline}"
+awk_1="${start}${word}_?${endline}"
 awk_2=".*"
 awk_3=".*"
 if [[ -n "$pos" ]]; then
