@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# handy CLI wordlist lookup (for use on android termux)
 
 help_func()
 {
